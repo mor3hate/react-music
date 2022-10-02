@@ -1,0 +1,14 @@
+.sub_title {
+	@apply text-xl font-semibold;
+}
+
+.genre {
+	@apply block rounded-2xl p-3 bg-white max-w-fit font-medium transition-colors;
+	&:hover {
+		@apply bg-dark-700 text-white;
+	}
+}
+
+.genre_container {
+	@apply flex flex-wrap gap-3 mt-5 animate-fade;
+}

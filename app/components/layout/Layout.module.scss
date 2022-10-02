@@ -1,0 +1,23 @@
+.layout {
+	@apply relative;
+
+	> aside {
+		@apply fixed top-0;
+		padding: 2rem 1rem 1rem;
+		&:first-child {
+			@apply left-0 bg-white h-full;
+			width: 100%;
+			max-width: 290px;
+		}
+		&:last-of-type {
+			@apply right-0;
+			width: 100%;
+			max-width: 290px;
+		}
+	}
+
+	.central {
+		@apply h-screen;
+		margin: 0 20%;
+	}
+}

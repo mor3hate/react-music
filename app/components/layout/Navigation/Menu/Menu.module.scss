@@ -1,0 +1,48 @@
+.menu_item {
+	@apply p-3 mb-2 transition-all relative rounded-xl;
+	&:hover {
+		@apply bg-dark-700;
+		> a {
+			@apply text-white;
+		}
+	}
+	> a {
+		@apply flex gap-2 items-center;
+
+		> svg {
+			height: 1.5rem;
+			width: 1.5rem;
+		}
+	}
+
+	&.active {
+		@apply bg-dark-700 rounded-xl;
+		&::after {
+			content: '';
+			@apply absolute bg-dark-700 h-full w-1 rounded-xl;
+			right: -15px;
+			top: 0;
+		}
+		> a {
+			@apply text-white;
+		}
+	}
+}
+
+.menu {
+	@apply mt-4 relative animate-fade;
+	.menu_title {
+		@apply opacity-80 ml-3 mb-2;
+	}
+}
+
+.container {
+	@apply mt-10;
+	&::after {
+		content: '';
+		@apply absolute bg-dark-700 w-full opacity-70;
+		height: 0.5px;
+		right: 0;
+		bottom: 25%;
+	}
+}

@@ -1,0 +1,9 @@
+.heading {
+	@apply text-3xl font-semibold ml-10;
+	&.withMargin {
+		@apply mt-10;
+	}
+}
+.subText {
+	@apply text-sm opacity-80 mt-12 ml-10;
+}

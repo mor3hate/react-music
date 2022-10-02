@@ -1,0 +1,18 @@
+.block {
+	@apply bg-dark-700 h-48 w-full absolute rounded-xl bg-opacity-0 transition-all;
+	&.active {
+		@apply bg-opacity-40;
+	}
+	&:hover {
+		@apply bg-opacity-40;
+	}
+	> button {
+		@apply absolute top-1/2 left-1/2;
+		transform: translate(-50%, -50%);
+		> svg {
+			fill: #ffff;
+			width: 2.2em;
+			height: 2.2em;
+		}
+	}
+}

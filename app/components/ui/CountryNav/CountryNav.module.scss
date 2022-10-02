@@ -1,0 +1,21 @@
+.nav_item {
+	@apply border-b border-b-transparent transition-colors;
+	&:hover {
+		@apply border-b-dark-700;
+	}
+	> a {
+		@apply flex gap-1 font-medium;
+	}
+	&.active {
+		@apply border-b-dark-700;
+	}
+}
+
+.country_menu {
+	@apply flex justify-between bg-white p-4 rounded-xl animate-fade;
+	max-width: 350px;
+}
+
+.country_menu_parent {
+	@apply max-w-sm mx-auto mt-8;
+}

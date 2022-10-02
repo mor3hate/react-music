@@ -1,0 +1,81 @@
+.player {
+	@apply fixed bottom-0 right-1/2 w-1/2 p-3 bg-white rounded-t-xl;
+	transform: translateX(50%);
+	box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+	.audio {
+	}
+
+	.controls {
+		@apply flex items-center justify-around;
+
+		.left {
+			@apply whitespace-nowrap overflow-hidden w-24;
+			.song_title {
+				@apply inline-block;
+				&.run {
+					@apply pl-8;
+					animation: scroll 7s infinite linear;
+				}
+			}
+		}
+
+		.center {
+			@apply flex items-center gap-3;
+
+			> button {
+				> svg {
+					width: 1.5em;
+					height: 1.5em;
+				}
+				&:first-child {
+					> svg {
+						@apply opacity-70 transition-opacity hover:opacity-100;
+					}
+				}
+				&:nth-child(3) {
+					> svg {
+						width: 2.5em;
+						height: 2.5em;
+					}
+				}
+			}
+		}
+
+		.right {
+			@apply flex items-center;
+			> svg {
+				width: 1.5em;
+				height: 1.5em;
+			}
+			.value {
+				width: 100%;
+				height: 12px;
+				-webkit-appearance: none;
+				background: #d3d3d3;
+				outline: none;
+				border-radius: 15px;
+				overflow: hidden;
+				cursor: pointer;
+				&::-webkit-slider-thumb {
+					-webkit-appearance: none;
+					width: 12px;
+					height: 12px;
+					border-radius: 50%;
+					background: #ffff;
+					cursor: pointer;
+					border: 1px solid #000000;
+					box-shadow: -407px 0 0 400px #000000;
+				}
+			}
+		}
+	}
+}
+
+@keyframes scroll {
+	0% {
+		transform: translate(0, 0);
+	}
+	100% {
+		transform: translate(-100%, 0);
+	}
+}
