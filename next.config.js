@@ -2,6 +2,10 @@
 const nextConfig = {
 	reactStrictMode: false,
 	swcMinify: true,
+	env: {
+		RAPID_KEY: process.env.REACT_RAPID_KEY,
+		SERVER_URL: process.env.REACT_SERVER_URL,
+	},
 	images: {
 		domains: [
 			'is1-ssl.mzstatic.com',

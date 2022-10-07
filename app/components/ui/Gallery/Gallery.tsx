@@ -11,11 +11,13 @@ interface IGallery {
 const Gallery: FC<IGallery> = ({ items }) => {
 	return (
 		<div className={styles.gallery}>
-			{items.map(item => (
+			{items.map((item, i) => (
 				<GalleryItem
+					index={i}
 					hub={item.hub}
 					artists={item.artists}
 					images={item.images}
+					songId={item.key}
 					key={item.key}
 					subtitle={item.subtitle}
 					title={item.title}

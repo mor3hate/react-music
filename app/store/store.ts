@@ -1,20 +1,28 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { shazamCoreApi } from './shazam/shazamCore'
+import storage from 'redux-persist/lib/storage'
+import { persistReducer, persistStore } from 'redux-persist'
+import thunk from 'redux-thunk'
 import playerReducer from './player/PlayerSlice'
-import { createWrapper } from 'next-redux-wrapper'
+
+const persistConfig = {
+	key: 'root',
+	storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, playerReducer)
 
 export const store = () =>
 	configureStore({
 		reducer: {
-			[shazamCoreApi.reducerPath]: shazamCoreApi.reducer,
-			player: playerReducer,
+			persistedReducer,
 		},
+		middleware: [thunk],
 	})
+
+export const persistor = persistStore(store())
 
 export type AppStore = ReturnType<typeof store>
 
 export type RootState = ReturnType<AppStore['getState']>
 
 export type AppDispatch = AppStore['dispatch']
-
-export const wrapper = createWrapper<AppStore>(store, { debug: true })

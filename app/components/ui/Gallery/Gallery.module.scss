@@ -1,5 +1,5 @@
 .gallery {
-	@apply flex flex-wrap gap-5 justify-center mt-8 pb-5;
+	@apply flex flex-wrap gap-5 justify-center mt-8 pb-20 animate-fade;
 }
 
 .card {
@@ -13,11 +13,11 @@
 	}
 
 	.card_title {
-		@apply font-medium mt-3;
+		@apply font-medium mt-3 border-b-2 border-transparent transition-colors hover:border-dark-700 max-w-fit;
 	}
 
 	.card_subtitle {
-		@apply text-sm mt-3 opacity-70;
+		@apply text-sm mt-3 opacity-70 border-b-2 border-transparent transition-colors hover:border-dark-700 max-w-fit;
 	}
 }
 .img {

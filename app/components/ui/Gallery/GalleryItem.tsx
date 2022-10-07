@@ -3,10 +3,8 @@ import Link from 'next/link'
 import { FC } from 'react'
 import { useAppDispatch } from '../../../hooks/reduxHooks'
 import {
-	setPlay,
 	setCurrentTrack,
 	setToggleSong,
-	setCurrentTrackName,
 } from '../../../store/player/PlayerSlice'
 import { ITopChartSong } from '../../../store/shazam/shazamCore-interface'
 import PlayPause from '../Play-Pause/PlayPause'
@@ -14,20 +12,26 @@ import PlayPause from '../Play-Pause/PlayPause'
 import styles from './Gallery.module.scss'
 
 const GalleryItem: FC<ITopChartSong> = ({
+	index,
 	artists,
 	images,
-	key,
 	subtitle,
 	title,
 	hub: { actions },
+	songId,
 }) => {
 	const dispatch = useAppDispatch()
 
 	const handlePlay = () => {
-		dispatch(setCurrentTrack(actions[1].uri || ''))
-		dispatch(setCurrentTrackName(title))
+		dispatch(
+			setCurrentTrack({
+				uri: actions[1].uri || '',
+				name: title,
+				index: index,
+			})
+		)
+
 		dispatch(setToggleSong(true))
-		dispatch(setPlay(true))
 	}
 
 	const handlePause = () => {
@@ -45,7 +49,7 @@ const GalleryItem: FC<ITopChartSong> = ({
 				/>
 				<PlayPause onPause={handlePause} onPlay={handlePlay} title={title} />
 			</div>
-			<Link href={`/songs/${key}`}>
+			<Link href={`/songs/${songId}`}>
 				<a className={styles.card_title}>{title}</a>
 			</Link>
 			<Link

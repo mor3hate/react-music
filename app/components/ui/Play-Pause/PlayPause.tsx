@@ -8,7 +8,7 @@ import clsx from 'clsx'
 
 const PlayPause: FC<IPlayPause> = ({ onPlay, onPause, title }) => {
 	const { currentTrackIsPlaying, currentTrack } = useAppSelector(
-		state => state.player
+		state => state.persistedReducer
 	)
 
 	const [show, setIsShow] = useState(false)
@@ -31,7 +31,7 @@ const PlayPause: FC<IPlayPause> = ({ onPlay, onPause, title }) => {
 		>
 			{show && (
 				<>
-					{currentTrackIsPlaying ? (
+					{currentTrackIsPlaying && title === currentTrack.name ? (
 						<button onClick={onPause}>
 							<MdIcon name='MdPauseCircleFilled' />
 						</button>

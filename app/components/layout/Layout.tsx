@@ -8,7 +8,11 @@ import Sidebar from './Sidebar/Sidebar'
 import { CSSTransition } from 'react-transition-group'
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
-	const { currentTrack, isPlaying } = useAppSelector(state => state.player)
+	const {
+		currentTrack: { index },
+		isPlaying,
+		allSongs,
+	} = useAppSelector(state => state.persistedReducer)
 
 	return (
 		<div className={styles.layout}>
@@ -18,10 +22,13 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
 			<CSSTransition
 				in={isPlaying}
 				timeout={300}
-				classNames='show__player'
+				classNames='show__blocks'
 				unmountOnExit
 			>
-				<Player songName={currentTrack.name} musicSource={currentTrack.uri} />
+				<Player
+					songName={allSongs[index]?.title}
+					musicSource={allSongs[index]?.hub.actions[1].uri || ''}
+				/>
 			</CSSTransition>
 		</div>
 	)

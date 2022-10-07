@@ -31,20 +31,24 @@ a {
 	}
 }
 
-.show__player-enter {
+.show__blocks-enter {
 	opacity: 0;
 	transform: scale(0.9);
 }
-.show__player-enter-active {
+.show__blocks-enter-active {
 	opacity: 1;
 	transform: translateX(0);
 	transition: opacity 300ms, transform 300ms;
 }
-.show__player-exit {
+.show__blocks-exit {
 	opacity: 1;
 }
-.show__player-exit-active {
+.show__blocks-exit-active {
 	opacity: 0;
 	transform: scale(0.9);
 	transition: opacity 300ms, transform 300ms;
+}
+
+.skeleton {
+	@apply flex gap-5 flex-wrap justify-center mt-8;
 }

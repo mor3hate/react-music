@@ -22,6 +22,8 @@ export interface ITopChartSong {
 	images: Images
 	hub: Hub
 	key: string
+	songId: string
 	subtitle: string
 	title: string
+	index: number
 }

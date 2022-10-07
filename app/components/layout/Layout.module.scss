@@ -17,7 +17,7 @@
 	}
 
 	.central {
-		@apply h-screen;
+		@apply h-screen relative;
 		margin: 0 20%;
 	}
 }

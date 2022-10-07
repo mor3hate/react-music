@@ -1,0 +1,10 @@
+.error_block {
+	@apply rounded-xl p-4 flex flex-col items-center fixed top-4 z-10 right-1/2 bg-red-600 text-white;
+	transform: translateX(50%);
+	> h3 {
+		@apply font-semibold text-lg mb-1 mt-1;
+	}
+	> button {
+		@apply absolute top-0 right-1 font-semibold;
+	}
+}

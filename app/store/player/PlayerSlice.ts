@@ -1,28 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { IPlayer } from './player-interface'
+import { ICurrentTrack, IPlayer } from './player-interface'
+import { ITopChartSong } from '../shazam/shazamCore-interface'
 
 const initialState: IPlayer = {
 	isPlaying: false,
 	currentTrack: {
 		uri: '',
 		name: '',
+		index: 0,
 	},
 	currentTrackIsPlaying: false,
+	allSongs: [],
 }
 
 export const playerSlice = createSlice({
 	name: 'player',
 	initialState,
 	reducers: {
-		setPlay: (state, action: PayloadAction<boolean>) => {
-			state.isPlaying = action.payload
+		setAllSongs: (state, action: PayloadAction<ITopChartSong[]>) => {
+			state.allSongs = action.payload
 		},
-		setCurrentTrack: (state, action: PayloadAction<string>) => {
-			state.currentTrack.uri = action.payload
-		},
-		setCurrentTrackName: (state, action: PayloadAction<string>) => {
-			state.currentTrack.name = action.payload
+		setCurrentTrack: (state, action: PayloadAction<ICurrentTrack>) => {
+			state.currentTrack = action.payload
+			state.isPlaying = true
 		},
 		setToggleSong: (state, action: PayloadAction<boolean>) => {
 			state.currentTrackIsPlaying = action.payload
@@ -30,7 +31,7 @@ export const playerSlice = createSlice({
 	},
 })
 
-export const { setPlay, setCurrentTrack, setToggleSong, setCurrentTrackName } =
+export const { setCurrentTrack, setToggleSong, setAllSongs } =
 	playerSlice.actions
 
 export default playerSlice.reducer

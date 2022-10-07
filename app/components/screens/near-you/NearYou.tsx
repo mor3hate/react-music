@@ -1,32 +1,33 @@
 import { FC, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks'
+import { IChart } from '../../../shared/types/charts.page.type'
 import { setAllSongs } from '../../../store/player/PlayerSlice'
-import { ITopChartSong } from '../../../store/shazam/shazamCore-interface'
+import CountryNavMenu from '../../ui/CountryNav/CountryNavMenu'
 import Gallery from '../../ui/Gallery/Gallery'
 import Heading from '../../ui/Heading/Heading'
 import Meta from '../../ui/Meta/Meta'
+import { countryMenu } from './country-nav-data'
 
-export interface IHome {
-	songs: ITopChartSong[]
-}
-
-const Home: FC<IHome> = ({ songs }) => {
+const NearYou: FC<IChart> = ({ charts }) => {
 	const dispatch = useAppDispatch()
 	useEffect(() => {
-		dispatch(setAllSongs(songs))
-	}, [dispatch, songs])
+		dispatch(setAllSongs(charts))
+	}, [dispatch, charts])
 
 	const { allSongs } = useAppSelector(state => state.persistedReducer)
 
 	return (
 		<Meta
-			title='Listen your best music'
-			description='Discover, manage and share over 80 million tracks, including more than 4 million podcast titles for free'
+			title='Top charts near you'
+			description='Get all top charts for your country!'
 		>
-			<Heading title='Trending' withSub subText="What's hot🔥" />
+			<Heading title='Choose your country!' />
+
+			<CountryNavMenu menu={countryMenu} />
+
 			<Gallery items={allSongs} />
 		</Meta>
 	)
 }
 
-export default Home
+export default NearYou

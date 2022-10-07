@@ -18,6 +18,9 @@ module.exports = {
 			dark: {
 				700: '#15111E',
 			},
+			red: {
+				600: '#D2042D',
+			},
 		},
 		extend: {
 			transitionDuration: {
