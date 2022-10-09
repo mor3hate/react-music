@@ -1,4 +1,11 @@
-import { ChangeEvent, FormEvent, useEffect, useRef, useState } from 'react'
+import {
+	ChangeEvent,
+	FormEvent,
+	useCallback,
+	useEffect,
+	useRef,
+	useState,
+} from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks/reduxHooks'
 import {
 	setCurrentTrack,
@@ -16,7 +23,7 @@ export const useAudio = () => {
 
 	const {
 		currentTrackIsPlaying,
-		currentTrack: { name, index, uri },
+		currentTrack: { name, index },
 		allSongs,
 	} = useAppSelector(state => state.persistedReducer)
 
@@ -35,7 +42,7 @@ export const useAudio = () => {
 		}
 	}, [currentTrackIsPlaying, name, audioRef.current?.volume, volume])
 
-	const togglePlay = () => {
+	const togglePlay = useCallback(() => {
 		if (!currentTrackIsPlaying) {
 			audioRef.current?.play()
 			dispatch(setToggleSong(true))
@@ -43,9 +50,9 @@ export const useAudio = () => {
 			audioRef.current?.pause()
 			dispatch(setToggleSong(false))
 		}
-	}
+	}, [currentTrackIsPlaying, dispatch])
 
-	const prev = () => {
+	const prev = useCallback(() => {
 		if (index - 1 < 0) {
 			const newIdx = allSongs.length - 1
 			dispatch(
@@ -65,9 +72,9 @@ export const useAudio = () => {
 				})
 			)
 		}
-	}
+	}, [index, allSongs, dispatch])
 
-	const next = () => {
+	const next = useCallback(() => {
 		if (index < allSongs.length - 1) {
 			const newIdx = index + 1
 			dispatch(
@@ -87,7 +94,7 @@ export const useAudio = () => {
 				})
 			)
 		}
-	}
+	}, [allSongs, dispatch, index])
 
 	const changeVolume = (e: ChangeEvent<HTMLInputElement>) => {
 		if (!audioRef.current) return
@@ -127,9 +134,39 @@ export const useAudio = () => {
 		setProgress(newTime)
 	}
 
-	const makeSongLoop = () => {
+	const makeSongLoop = useCallback(() => {
 		setLoop(!loop)
-	}
+	}, [loop])
+
+	useEffect(() => {
+		const handleKey = (e: KeyboardEvent) => {
+			switch (e.key) {
+				case ' ':
+					e.preventDefault()
+					togglePlay()
+					break
+
+				case 'ArrowRight':
+					next()
+					break
+
+				case 'ArrowLeft':
+					prev()
+					break
+
+				case 'f':
+					makeSongLoop()
+					break
+
+				default:
+					return
+			}
+		}
+		document.addEventListener('keydown', handleKey)
+		return () => {
+			document.removeEventListener('keydown', handleKey)
+		}
+	}, [togglePlay, next, prev, makeSongLoop])
 
 	return {
 		audioRef,

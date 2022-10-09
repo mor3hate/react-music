@@ -1,11 +1,12 @@
-import { FC, PropsWithChildren } from 'react'
+import { FC, PropsWithChildren, useState } from 'react'
 import { useAppSelector } from '../../hooks/reduxHooks'
 import Player from '../ui/Player/Player'
 
+import { CSSTransition } from 'react-transition-group'
 import styles from './Layout.module.scss'
 import Navigation from './Navigation/Navigation'
 import Sidebar from './Sidebar/Sidebar'
-import { CSSTransition } from 'react-transition-group'
+import Hamburger from '../ui/Hamburger/Hamburger'
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
 	const {
@@ -14,14 +15,21 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
 		allSongs,
 	} = useAppSelector(state => state.persistedReducer)
 
+	const [show, setIsShow] = useState(true)
+
 	return (
 		<div className={styles.layout}>
-			<Navigation />
+			<Hamburger
+				iconVariant={show ? 'open' : 'close'}
+				onClick={() => setIsShow(!show)}
+				show={show}
+			/>
+			<Navigation show={show} />
 			<main className={styles.central}>{children}</main>
 			<Sidebar />
 			<CSSTransition
 				in={isPlaying}
-				timeout={300}
+				timeout={200}
 				classNames='show__blocks'
 				unmountOnExit
 			>

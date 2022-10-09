@@ -18,7 +18,13 @@ const CountryNavItem: FC<{ item: ICountryNavItem }> = ({
 		>
 			<Link href={link}>
 				<a>
-					<span style={{ backgroundImage: `url('${imagePath}')` }}></span>
+					<span
+						style={{
+							backgroundImage: `url(${imagePath})`,
+							height: '10px',
+							width: '15px',
+						}}
+					></span>
 					{name}
 				</a>
 			</Link>

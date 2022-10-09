@@ -30,7 +30,7 @@
 }
 
 .menu {
-	@apply mt-4 relative animate-fade;
+	@apply mt-4 relative;
 	.menu_title {
 		@apply opacity-80 ml-3 mb-2;
 	}
@@ -38,11 +38,4 @@
 
 .container {
 	@apply mt-10;
-	&::after {
-		content: '';
-		@apply absolute bg-dark-700 w-full opacity-70;
-		height: 0.5px;
-		right: 0;
-		bottom: 25%;
-	}
 }

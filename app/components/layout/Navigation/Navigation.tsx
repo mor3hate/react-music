@@ -1,15 +1,24 @@
+import { motion, AnimatePresence } from 'framer-motion'
 import { FC } from 'react'
-import AuthItems from './AuthItems/AuthItems'
 import Logo from './Logo'
 import MenuContainer from './Menu/MenuContainer'
 
-const Navigation: FC = () => {
+interface INavigation {
+	show: boolean
+}
+
+const Navigation: FC<INavigation> = ({ show }) => {
 	return (
-		<aside>
-			<Logo />
-			<MenuContainer />
-			<AuthItems />
-		</aside>
+		<AnimatePresence>
+			<motion.aside
+				animate={show ? { x: 0 } : { x: '-100%' }}
+				exit={{ opacity: 0 }}
+				transition={{ duration: 0.5 }}
+			>
+				<Logo />
+				<MenuContainer />
+			</motion.aside>
+		</AnimatePresence>
 	)
 }
 

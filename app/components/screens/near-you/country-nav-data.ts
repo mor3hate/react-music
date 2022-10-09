@@ -4,25 +4,25 @@ export const countryMenu: ICountryNavMenu = {
 	items: [
 		{
 			name: 'USA',
-			imagePath: '',
+			imagePath: '/us.svg',
 			link: '/near-you/us',
 			slug: 'us',
 		},
 		{
 			name: 'Belgium',
-			imagePath: '',
+			imagePath: '/be.svg',
 			link: '/near-you/be',
 			slug: 'be',
 		},
 		{
 			name: 'Germany',
-			imagePath: '',
+			imagePath: '/gr.svg',
 			link: '/near-you/gr',
 			slug: 'gr',
 		},
 		{
 			name: 'France',
-			imagePath: '',
+			imagePath: '/fr.svg',
 			link: '/near-you/fr',
 			slug: 'fr',
 		},

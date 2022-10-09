@@ -1,7 +1,6 @@
 import { FC } from 'react'
 import { ITopChartSong } from '../../../store/shazam/shazamCore-interface'
 import GalleryItem from './GalleryItem'
-
 import styles from './Gallery.module.scss'
 
 interface IGallery {

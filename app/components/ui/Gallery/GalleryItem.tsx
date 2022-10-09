@@ -10,6 +10,7 @@ import { ITopChartSong } from '../../../store/shazam/shazamCore-interface'
 import PlayPause from '../Play-Pause/PlayPause'
 
 import styles from './Gallery.module.scss'
+import { motion } from 'framer-motion'
 
 const GalleryItem: FC<ITopChartSong> = ({
 	index,
@@ -17,7 +18,7 @@ const GalleryItem: FC<ITopChartSong> = ({
 	images,
 	subtitle,
 	title,
-	hub: { actions },
+	hub,
 	songId,
 }) => {
 	const dispatch = useAppDispatch()
@@ -25,7 +26,7 @@ const GalleryItem: FC<ITopChartSong> = ({
 	const handlePlay = () => {
 		dispatch(
 			setCurrentTrack({
-				uri: actions[1].uri || '',
+				uri: hub.actions[1].uri || '',
 				name: title,
 				index: index,
 			})
@@ -39,7 +40,12 @@ const GalleryItem: FC<ITopChartSong> = ({
 	}
 
 	return (
-		<div className={styles.card}>
+		<motion.div
+			initial={{ opacity: 0, scale: 0.7 }}
+			whileInView={{ opacity: 1, scale: 1 }}
+			viewport={{ once: true }}
+			className={styles.card}
+		>
 			<div className={styles.img_wrapper}>
 				<Image
 					src={images.coverart}
@@ -57,7 +63,7 @@ const GalleryItem: FC<ITopChartSong> = ({
 			>
 				<a className={styles.card_subtitle}>{subtitle}</a>
 			</Link>
-		</div>
+		</motion.div>
 	)
 }
 

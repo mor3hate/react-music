@@ -4,7 +4,7 @@
 		@apply border-b-dark-700;
 	}
 	> a {
-		@apply flex gap-1 font-medium;
+		@apply flex font-medium items-center;
 	}
 	&.active {
 		@apply border-b-dark-700;

@@ -19,7 +19,7 @@ export const playerSlice = createSlice({
 	initialState,
 	reducers: {
 		setAllSongs: (state, action: PayloadAction<ITopChartSong[]>) => {
-			state.allSongs = action.payload
+			state.allSongs = [...action.payload]
 		},
 		setCurrentTrack: (state, action: PayloadAction<ICurrentTrack>) => {
 			state.currentTrack = action.payload

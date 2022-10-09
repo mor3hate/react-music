@@ -1,14 +1,21 @@
 .block {
-	@apply bg-dark-700 h-48 w-full absolute rounded-xl bg-opacity-0 transition-all;
+	@apply bg-dark-700 h-48 w-full relative rounded-xl bg-opacity-0 transition-all grid place-items-center;
 	&.active {
 		@apply bg-opacity-40;
+		&::after {
+			content: '';
+			@apply h-20 w-20 rounded-full border border-white absolute top-0 left-0 animate-ping;
+		}
+		&::before {
+			content: '';
+			@apply h-14 w-14 rounded-full border border-white absolute top-1/2 left-1/2 animate-ping;
+		}
 	}
 	&:hover {
 		@apply bg-opacity-40;
 	}
 	> button {
-		@apply absolute top-1/2 left-1/2;
-		transform: translate(-50%, -50%);
+		@apply z-1;
 		> svg {
 			fill: #ffff;
 			width: 2.2em;
