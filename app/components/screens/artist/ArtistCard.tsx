@@ -2,32 +2,37 @@ import { useRouter } from 'next/router'
 import { FC } from 'react'
 import ArtistDetails from '../../ui/ArtistDetails/ArtistDetails'
 import ArtistSongs from '../../ui/ArtistDetails/ArtistSongs/ArtistSongs'
-
 import Heading from '../../ui/Heading/Heading'
 import Meta from '../../ui/Meta/Meta'
 import SubHeading from '../../ui/SubHeading/SubHeading'
-import { IArtists, Song } from './artist-interface'
+import { Song } from './artist-interface'
+import { useArtist } from './useArtist'
+import WaveLoader from '../../ui/LoaderWave/WaveLoader'
 
-export interface IArtistCard {
-	artist: IArtists
-	artistId: number
-}
+const ArtistCard: FC = () => {
+	const { query } = useRouter()
 
-const ArtistCard: FC<IArtistCard> = ({ artist, artistId }) => {
-	// const { query } = useRouter()
-	// const { id } = query
-	// console.log(id)
+	const { id } = query
+
+	const artistId = Number(id)
+
+	const { data, isLoading, error } = useArtist(artistId)
+
 	//@ts-ignore
-	const songs = Object.entries<Song>(artist.songs)
+	const songs = Object.entries<Song>(data?.songs || [])
 	return (
 		<Meta
-			title={artist.artists[artistId].attributes.name}
+			title={data?.artists[artistId].attributes.name || 'Artist page'}
 			description='All the information about various artists'
 		>
 			<Heading title='Artist page' />
-			<ArtistDetails attributes={artist.artists[artistId].attributes} />
+			{isLoading ? (
+				<WaveLoader />
+			) : (
+				<ArtistDetails attributes={data?.artists[artistId].attributes!} />
+			)}
 			<SubHeading title='Related songs' />
-			<ArtistSongs songs={songs} />
+			{isLoading ? <WaveLoader /> : <ArtistSongs songs={songs} />}
 		</Meta>
 	)
 }

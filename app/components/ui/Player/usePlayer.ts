@@ -15,7 +15,7 @@ import {
 export const useAudio = () => {
 	const audioRef = useRef<HTMLAudioElement>(null)
 
-	const [volume, setVolume] = useState(0.2)
+	const [volume, setVolume] = useState(1 / 100)
 	const [progress, setProgress] = useState(0)
 	const [currentTime, setCurrentTime] = useState(0)
 	const [audioTime, setAudioTime] = useState(0)

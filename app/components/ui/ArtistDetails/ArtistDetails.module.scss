@@ -1,5 +1,5 @@
 .artist_details {
-	@apply grid place-items-center grid-cols-1 mt-20 relative;
+	@apply grid place-items-center grid-cols-1 mt-20 relative animate-scale;
 
 	> p {
 		@apply font-medium text-2xl mt-2;

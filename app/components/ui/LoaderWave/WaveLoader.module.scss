@@ -1,0 +1,40 @@
+@import '../../../../styles/variables.scss';
+
+.container {
+	position: relative;
+	width: $max-w;
+	height: $max-w / 2;
+	font-size: ($size / ($max-w / 1em));
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+.wave {
+	border-width: $s-w;
+	border-style: solid;
+	position: absolute;
+	animation: wave $speed infinite alternate;
+	transform: rotate(-44.5deg);
+	$a: 1;
+	@for $i from 1 through $f {
+		&:nth-child(#{$i}) {
+			$w: $max-w - (($r/$f) * $i);
+			@if $i > 1 {
+				$a: 1 - ((1 / ($f + 1)) * $i);
+			}
+			width: $w;
+			height: $w;
+			bottom: $w/-2;
+			left: ($max-w - $w) / 2;
+			animation-delay: $i * ($speed / $f);
+			border-color: transparent transparent rgba($c, $a) rgba($c, $a);
+			border-radius: $w;
+		}
+	}
+}
+
+@keyframes wave {
+	to {
+		transform: rotate(135deg);
+	}
+}

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { FC } from 'react'
 import { Song } from '../../../screens/artist/artist-interface'
 import ArtistSongItem from './ArtistSongItem'
@@ -10,7 +11,12 @@ interface IArtistSongs {
 
 const ArtistSongs: FC<IArtistSongs> = ({ songs }) => {
 	return (
-		<div className={styles.artist_songs}>
+		<motion.div
+			initial={{ x: '-100%', opacity: 0 }}
+			animate={{ x: 0, opacity: 1 }}
+			transition={{ duration: 1.5 }}
+			className={styles.artist_songs}
+		>
 			{songs.map((item, i) => (
 				<ArtistSongItem
 					attributes={item[1].attributes}
@@ -18,7 +24,7 @@ const ArtistSongs: FC<IArtistSongs> = ({ songs }) => {
 					index={i}
 				/>
 			))}
-		</div>
+		</motion.div>
 	)
 }
 

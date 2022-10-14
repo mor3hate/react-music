@@ -1,7 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit'
 import storage from 'redux-persist/lib/storage'
-import { persistReducer, persistStore } from 'redux-persist'
-import thunk from 'redux-thunk'
+import {
+	persistReducer,
+	persistStore,
+	FLUSH,
+	REHYDRATE,
+	PAUSE,
+	PERSIST,
+	PURGE,
+	REGISTER,
+} from 'redux-persist'
 import playerReducer from './player/PlayerSlice'
 
 const persistConfig = {
@@ -11,18 +19,22 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, playerReducer)
 
-export const store = () =>
-	configureStore({
-		reducer: {
-			persistedReducer,
-		},
-		middleware: [thunk],
-	})
+const store = configureStore({
+	reducer: {
+		persistedReducer,
+	},
+	middleware: getDefaultMiddleware =>
+		getDefaultMiddleware({
+			serializableCheck: {
+				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+			},
+		}),
+})
 
-export const persistor = persistStore(store())
+export type RootState = ReturnType<typeof store.getState>
 
-export type AppStore = ReturnType<typeof store>
+export type AppDispatch = typeof store.dispatch
 
-export type RootState = ReturnType<AppStore['getState']>
+export const persistor = persistStore(store)
 
-export type AppDispatch = AppStore['dispatch']
+export default store
