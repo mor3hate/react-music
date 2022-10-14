@@ -1,0 +1,19 @@
+.artist_songs {
+	@apply flex items-center overflow-x-auto flex-nowrap py-3 ml-10 gap-4 mt-4;
+	-webkit-overflow-scrolling: touch;
+}
+
+.song_details {
+	@apply flex flex-col gap-2 bg-white rounded-xl p-3;
+	max-width: 200px;
+	min-height: 220px;
+	.song_detailsImg {
+		@apply w-44 h-44 overflow-hidden rounded-xl relative;
+		> .img {
+			@apply image-bg;
+		}
+	}
+	> p {
+		@apply w-44 truncate;
+	}
+}

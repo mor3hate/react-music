@@ -11,6 +11,7 @@ import PlayPause from '../Play-Pause/PlayPause'
 
 import styles from './Gallery.module.scss'
 import { motion } from 'framer-motion'
+import { usePlay } from '../../../hooks/usePlay'
 
 const GalleryItem: FC<ITopChartSong> = ({
 	index,
@@ -21,23 +22,7 @@ const GalleryItem: FC<ITopChartSong> = ({
 	hub,
 	songId,
 }) => {
-	const dispatch = useAppDispatch()
-
-	const handlePlay = () => {
-		dispatch(
-			setCurrentTrack({
-				uri: hub.actions[1].uri || '',
-				name: title,
-				index: index,
-			})
-		)
-
-		dispatch(setToggleSong(true))
-	}
-
-	const handlePause = () => {
-		dispatch(setToggleSong(false))
-	}
+	const { handlePlay, handlePause } = usePlay()
 
 	return (
 		<motion.div
@@ -53,7 +38,11 @@ const GalleryItem: FC<ITopChartSong> = ({
 					className={styles.img}
 					layout='fill'
 				/>
-				<PlayPause onPause={handlePause} onPlay={handlePlay} title={title} />
+				<PlayPause
+					onPause={handlePause}
+					onPlay={() => handlePlay(hub.actions[1]?.uri || '', title, index)}
+					title={title}
+				/>
 			</div>
 			<Link href={`/songs/${songId}`}>
 				<a className={styles.card_title}>{title}</a>

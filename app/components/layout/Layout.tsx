@@ -9,11 +9,9 @@ import Sidebar from './Sidebar/Sidebar'
 import Hamburger from '../ui/Hamburger/Hamburger'
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
-	const {
-		currentTrack: { index },
-		isPlaying,
-		allSongs,
-	} = useAppSelector(state => state.persistedReducer)
+	const { currentTrack, isPlaying, allSongs } = useAppSelector(
+		state => state.persistedReducer
+	)
 
 	const [show, setIsShow] = useState(true)
 
@@ -33,10 +31,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
 				classNames='show__blocks'
 				unmountOnExit
 			>
-				<Player
-					songName={allSongs[index]?.title}
-					musicSource={allSongs[index]?.hub.actions[1].uri || ''}
-				/>
+				<Player songName={currentTrack.name} musicSource={currentTrack.uri} />
 			</CSSTransition>
 		</div>
 	)
