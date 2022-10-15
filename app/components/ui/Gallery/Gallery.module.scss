@@ -3,7 +3,7 @@
 }
 
 .card {
-	@apply h-72 flex flex-col w-64 bg-white p-3 rounded-xl;
+	@apply h-72 flex flex-col w-64 bg-white p-3 rounded-xl shadow-xl;
 	.img_wrapper {
 		@apply relative w-full h-48;
 	}

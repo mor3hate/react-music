@@ -1,0 +1,35 @@
+@import '../../../../styles/gradient.scss';
+
+.song_details_card {
+	@apply rounded-2xl relative overflow-hidden mx-auto mt-8 shadow-xl;
+	max-width: 768px;
+	min-height: 320px;
+	@include fade-bg-gradient();
+	.img {
+		@apply image-bg;
+	}
+	.song_details_card_left {
+		@apply absolute left-0 top-0 flex flex-col  gap-2 z-2;
+		padding: 2.5rem 0 1rem 2rem;
+		> a {
+			@apply text-sm opacity-60 border-b-2 border-transparent transition-all hover:border-black hover:opacity-100 max-w-fit;
+		}
+		> h3 {
+			@apply text-2xl font-medium;
+			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+		}
+		> button {
+			@apply mt-1;
+		}
+	}
+
+	.song_details_card_right {
+		@apply absolute right-0 bottom-0 text-white p-4 z-2;
+		> p {
+			@apply opacity-60 text-base;
+		}
+		> a {
+			@apply text-right;
+		}
+	}
+}

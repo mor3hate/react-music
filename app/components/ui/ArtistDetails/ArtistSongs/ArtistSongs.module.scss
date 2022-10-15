@@ -1,10 +1,18 @@
 .artist_songs {
-	@apply flex items-center overflow-x-auto flex-nowrap py-3 ml-10 gap-4 mt-4;
-	-webkit-overflow-scrolling: touch;
+	@apply flex items-center overflow-x-scroll flex-nowrap py-3 ml-10 gap-4 mt-4;
+	&::-webkit-scrollbar {
+		background-color: #f8f8ff;
+		height: 10px;
+		border-radius: 15px;
+	}
+	&::-webkit-scrollbar-thumb {
+		background-color: #000000;
+		border-radius: 15px;
+	}
 }
 
 .song_details {
-	@apply flex flex-col gap-2 bg-white rounded-xl p-3;
+	@apply flex flex-col gap-2 bg-white rounded-xl p-3 shadow-inner;
 	max-width: 200px;
 	min-height: 220px;
 	.song_detailsImg {

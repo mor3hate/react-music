@@ -1,11 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
-import { useAppDispatch } from '../../../hooks/reduxHooks'
-import {
-	setCurrentTrack,
-	setToggleSong,
-} from '../../../store/player/PlayerSlice'
 import { ITopChartSong } from '../../../store/shazam/shazamCore-interface'
 import PlayPause from '../Play-Pause/PlayPause'
 

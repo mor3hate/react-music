@@ -7,14 +7,16 @@ import styles from './RelatedSongs.module.scss'
 const RelatedSongs: FC<IRelatedSongsMenu> = ({ menu }) => {
 	return (
 		<div className={styles.related_song_menu}>
-			{menu.map((item, i) => (
-				<RelatedSongItem
-					index={i}
-					title={item.title}
-					hub={item.hub}
-					key={item.title}
-				/>
-			))}
+			{menu
+				.filter(i => !!i.hub.actions)
+				.map((item, i) => (
+					<RelatedSongItem
+						index={i}
+						title={item.title}
+						hub={item.hub}
+						key={item.title}
+					/>
+				))}
 		</div>
 	)
 }

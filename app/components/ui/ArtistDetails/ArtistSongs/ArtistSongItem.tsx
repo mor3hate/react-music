@@ -16,6 +16,7 @@ const ArtistSongItem: FC<Song> = ({ attributes, index }) => {
 						.replace('{h}', '176')}
 					className={styles.img}
 					layout='fill'
+					alt='song poster'
 					unoptimized
 					draggable={false}
 				/>

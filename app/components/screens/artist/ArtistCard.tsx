@@ -16,7 +16,7 @@ const ArtistCard: FC = () => {
 
 	const artistId = Number(id)
 
-	const { data, isLoading, error } = useArtist(artistId)
+	const { data, isLoading } = useArtist(artistId)
 
 	//@ts-ignore
 	const songs = Object.entries<Song>(data?.songs || [])
@@ -26,13 +26,15 @@ const ArtistCard: FC = () => {
 			description='All the information about various artists'
 		>
 			<Heading title='Artist page' />
-			{isLoading ? (
-				<WaveLoader />
-			) : (
-				<ArtistDetails attributes={data?.artists[artistId].attributes!} />
-			)}
-			<SubHeading title='Related songs' />
-			{isLoading ? <WaveLoader /> : <ArtistSongs songs={songs} />}
+			<div style={{ paddingBottom: '200px' }}>
+				{isLoading ? (
+					<WaveLoader />
+				) : (
+					<ArtistDetails attributes={data?.artists[artistId].attributes!} />
+				)}
+				<SubHeading title='Related songs' />
+				{isLoading ? <WaveLoader /> : <ArtistSongs songs={songs} />}
+			</div>
 		</Meta>
 	)
 }

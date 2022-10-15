@@ -1,0 +1,6 @@
+.lyrics {
+	@apply text-center mt-4 animate-fade;
+	> p {
+		@apply mb-4 font-medium;
+	}
+}
