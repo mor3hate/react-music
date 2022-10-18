@@ -29,7 +29,7 @@
 			@apply opacity-60 text-base;
 		}
 		> a {
-			@apply text-right;
+			@apply text-right border-b-2 border-transparent transition-all hover:border-white;
 		}
 	}
 }

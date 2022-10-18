@@ -2,8 +2,9 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
-import { useAppSelector } from '../../../hooks/reduxHooks'
 import { usePlay } from '../../../hooks/usePlay'
+import { checkGenre } from '../../../shared/helpers/genre.helper'
+import { genresMenu } from '../../layout/Sidebar/genres/genre-interface'
 import Button from '../Button/Button'
 import { ISong } from './song-interface'
 
@@ -12,9 +13,11 @@ import styles from './SongDetails.module.scss'
 const SongDetails: FC<{ song: ISong }> = ({ song }) => {
 	const { handlePlay } = usePlay()
 
-	const { currentTrackIsPlaying } = useAppSelector(
-		state => state.persistedReducer
-	)
+	const { items } = genresMenu
+
+	const songDetailGenres = song.genres.primary.toLowerCase()
+
+	const { checkedGenre } = checkGenre(items, songDetailGenres)
 
 	return (
 		<motion.div
@@ -53,9 +56,7 @@ const SongDetails: FC<{ song: ISong }> = ({ song }) => {
 			<div className={styles.song_details_card_right}>
 				<p>Genres</p>
 				<Link
-					href={
-						`/genres/${song.genres.primary.toLowerCase()}` || '/genres/house'
-					}
+					href={checkedGenre ? `/genres/${songDetailGenres}` : '/genres/house'}
 				>
 					<a>{song.genres.primary}</a>
 				</Link>

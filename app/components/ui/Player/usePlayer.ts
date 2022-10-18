@@ -141,7 +141,7 @@ export const useAudio = () => {
 	useEffect(() => {
 		const handleKey = (e: KeyboardEvent) => {
 			switch (e.key) {
-				case ' ':
+				case 'g':
 					e.preventDefault()
 					togglePlay()
 					break

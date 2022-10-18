@@ -14,7 +14,6 @@ const Hamburger: FC<IHamburger> = ({ iconVariant, onClick, show }) => {
 			})}
 			onClick={onClick}
 			whileTap={{ scale: 0.9 }}
-			whileHover={{ scale: 1.1 }}
 			animate={show ? { x: 0 } : { left: 3 }}
 			transition={{ duration: 0.5 }}
 		>

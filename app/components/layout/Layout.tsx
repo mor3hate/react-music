@@ -7,9 +7,11 @@ import styles from './Layout.module.scss'
 import Navigation from './Navigation/Navigation'
 import Sidebar from './Sidebar/Sidebar'
 import Hamburger from '../ui/Hamburger/Hamburger'
+import SearchField from '../ui/SearchField/SearchField'
+import Search from './Search/Search'
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
-	const { currentTrack, isPlaying, allSongs } = useAppSelector(
+	const { currentTrack, isPlaying } = useAppSelector(
 		state => state.persistedReducer
 	)
 
@@ -33,6 +35,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
 			>
 				<Player songName={currentTrack.name} musicSource={currentTrack.uri} />
 			</CSSTransition>
+			<Search />
 		</div>
 	)
 }

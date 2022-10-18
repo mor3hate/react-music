@@ -3,11 +3,7 @@ import { FC } from 'react'
 import Logo from './Logo'
 import MenuContainer from './Menu/MenuContainer'
 
-interface INavigation {
-	show: boolean
-}
-
-const Navigation: FC<INavigation> = ({ show }) => {
+const Navigation: FC<{ show: boolean }> = ({ show }) => {
 	return (
 		<AnimatePresence>
 			<motion.aside

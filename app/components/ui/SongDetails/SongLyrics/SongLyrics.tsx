@@ -7,7 +7,7 @@ const SongLyrics: FC<ISections> = ({ sections }) => {
 	return (
 		<div className={styles.lyrics}>
 			{sections[1].text
-				? sections[1].text.slice(0, 16).map(t => <p>{t}</p>)
+				? sections[1].text.slice(0, 16).map((t, i) => <p key={i}>{t}</p>)
 				: 'Sorry, lyrics are not found'}
 			...
 		</div>

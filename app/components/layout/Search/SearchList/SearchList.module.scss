@@ -1,0 +1,12 @@
+.list {
+	@apply bg-white rounded-xl absolute animate-scale w-full z-3 p-3;
+	min-height: 100px;
+	top: calc(100% + 15px);
+	.list_item {
+		@apply flex items-center gap-3 mt-3 border-r-2 border-transparent transition-all hover:border-dark-700;
+		> span {
+			@apply block truncate;
+			width: 60%;
+		}
+	}
+}

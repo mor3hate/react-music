@@ -11,7 +11,7 @@ const RelatedSongItem: FC<IRelatedSongItem> = ({ index, title, hub }) => {
 	const { handlePlay } = usePlay()
 
 	const {
-		currentTrack: { name },
+		currentTrack: { name, uri },
 	} = useAppSelector(state => state.persistedReducer)
 
 	return (
@@ -20,7 +20,7 @@ const RelatedSongItem: FC<IRelatedSongItem> = ({ index, title, hub }) => {
 			whileHover={{ scale: 1.1 }}
 			onClick={() => handlePlay(hub.actions[1]?.uri || '', title, index)}
 			className={clsx(styles.related_item, {
-				[styles.active]: name === title,
+				[styles.active]: name === title && uri === hub.actions[1]?.uri,
 			})}
 		>
 			<span>{index + 1}.</span>

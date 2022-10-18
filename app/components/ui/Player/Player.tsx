@@ -61,7 +61,7 @@ const Player: FC<IPlayer> = ({ songName, musicSource }) => {
 						<MdIcon name='MdFastRewind' />
 					</button>
 
-					<button onClick={togglePlay} title='Pause and play(space)'>
+					<button onClick={togglePlay} title='Pause and play(g)'>
 						<MdIcon
 							name={
 								currentTrackIsPlaying

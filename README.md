@@ -21,3 +21,9 @@ This app was created via React, NextJS, Redux Toolkit, React Query, Redux Persis
 - Cross-browser app
 
 - Beautiful animations
+
+## Screenshots
+
+![App Screenshot](https://s4.gifyu.com/images/232232323.gif)
+
+![App Screenshot](https://s4.gifyu.com/images/3434343434.gif)

@@ -1,17 +1,25 @@
 .layout {
 	@apply relative flex;
-
+	@media (max-width: 489.99px) {
+		@apply flex-col-reverse items-center;
+	}
 	> aside {
 		@apply fixed top-0;
 		padding: 2rem 1rem 1rem;
 		&:first-of-type {
-			@apply fixed left-0 bg-white h-full z-1;
+			@apply left-0 bg-white h-full;
 			width: 300px;
 			max-width: 100%;
 		}
 		&:last-of-type {
 			@apply right-0;
 			width: 20%;
+			@media (max-width: 768px) {
+				width: 30%;
+			}
+			@media (max-width: 489.99px) {
+				@apply static w-full;
+			}
 		}
 	}
 
