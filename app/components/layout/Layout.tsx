@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, useState } from 'react'
+import { FC, PropsWithChildren } from 'react'
 import { useAppSelector } from '../../hooks/reduxHooks'
 import Player from '../ui/Player/Player'
 
@@ -7,25 +7,26 @@ import styles from './Layout.module.scss'
 import Navigation from './Navigation/Navigation'
 import Sidebar from './Sidebar/Sidebar'
 import Hamburger from '../ui/Hamburger/Hamburger'
-import SearchField from '../ui/SearchField/SearchField'
-import Search from './Search/Search'
+import { useOutside } from '../../hooks/useOutside'
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
 	const { currentTrack, isPlaying } = useAppSelector(
 		state => state.persistedReducer
 	)
 
-	const [show, setIsShow] = useState(true)
+	const { ref, isShow, setIsShow } = useOutside(false)
 
 	return (
 		<div className={styles.layout}>
+			{isShow && <div className={styles.backdrop}></div>}
 			<Hamburger
-				iconVariant={show ? 'open' : 'close'}
-				onClick={() => setIsShow(!show)}
-				show={show}
+				iconVariant={!isShow ? 'close' : 'open'}
+				onClick={() => setIsShow(!isShow)}
 			/>
-			<Navigation show={show} />
-			<main className={styles.central}>{children}</main>
+			<Navigation show={isShow} />
+			<main className={styles.central} ref={ref}>
+				{children}
+			</main>
 			<Sidebar />
 			<CSSTransition
 				in={isPlaying}
@@ -35,7 +36,6 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
 			>
 				<Player songName={currentTrack.name} musicSource={currentTrack.uri} />
 			</CSSTransition>
-			<Search />
 		</div>
 	)
 }

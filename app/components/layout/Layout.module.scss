@@ -1,31 +1,26 @@
 .layout {
-	@apply relative flex;
-	@media (max-width: 489.99px) {
-		@apply flex-col-reverse items-center;
-	}
+	@apply relative flex flex-1 md:flex-row flex-col-reverse;
+
 	> aside {
-		@apply fixed top-0;
 		padding: 2rem 1rem 1rem;
 		&:first-of-type {
-			@apply left-0 bg-white h-full;
-			width: 300px;
-			max-width: 100%;
+			@apply fixed left-0 top-0 h-full bg-white z-10;
+			width: 260px;
 		}
 		&:last-of-type {
-			@apply right-0;
+			@apply relative mt-12;
 			width: 20%;
-			@media (max-width: 768px) {
-				width: 30%;
-			}
-			@media (max-width: 489.99px) {
-				@apply static w-full;
+			@media (max-width: 767.98px) {
+				@apply w-full;
 			}
 		}
 	}
 
 	.central {
-		@apply h-screen relative;
-		width: 60%;
-		margin: 0 20%;
+		@apply h-screen relative flex-1;
+		margin: 0 10px;
 	}
+}
+.backdrop {
+	@apply fixed top-0 left-0 w-full h-full bg-black opacity-30 z-3;
 }
