@@ -7,10 +7,14 @@
 	}
 	> span {
 		&:last-child {
-			@apply block whitespace-nowrap;
+			@apply block whitespace-nowrap truncate;
+			max-width: 200px;
 		}
 	}
 }
 .related_song_menu {
 	@apply flex gap-4 ml-11 mt-4 flex-wrap;
+	@media (max-width: 768.98px) {
+		@apply ml-7;
+	}
 }

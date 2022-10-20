@@ -10,6 +10,7 @@ body {
 	margin: 0;
 	@apply bg-blue-500 text-black;
 	font-family: Montserrat;
+	overflow-x: hidden;
 }
 
 a {
@@ -37,4 +38,18 @@ a {
 	opacity: 0;
 	transform: scale(0.9);
 	transition: opacity 300ms, transform 300ms;
+}
+
+.error_page {
+	@apply mx-auto w-1/2 mt-36 text-center;
+	> h1 {
+		@apply text-2xl font-semibold mb-6;
+	}
+	> p {
+		@apply mb-6;
+	}
+	> a {
+		@apply font-medium opacity-70 border-b-2 border-transparent transition-all hover:border-dark-700
+		hover:opacity-100;
+	}
 }
