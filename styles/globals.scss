@@ -41,7 +41,7 @@ a {
 }
 
 .error_page {
-	@apply mx-auto w-1/2 mt-36 text-center;
+	@apply mx-auto w-1/2 mt-8 text-center pb-3;
 	> h1 {
 		@apply text-2xl font-semibold mb-6;
 	}
