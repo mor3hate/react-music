@@ -19,6 +19,12 @@ const HeadProvider: FC<PropsWithChildren> = ({ children }) => {
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 				<meta name='application-name' content='React Music' />
 				<meta name='theme-color' content={'#F4F5FE'} />
+				<meta name='apple-mobile-web-app-capable' content='yes' />
+				<meta name='apple-mobile-web-app-status-bar-style' content='default' />
+				<meta name='apple-mobile-web-app-title' content='Mor3Music' />
+				<meta name='mobile-web-app-capable' content='yes' />
+				<meta name='msapplication-config' content='/browserconfig.xml' />
+				<meta name='msapplication-tap-highlight' content='no' />
 			</Head>
 			{children}
 		</>
