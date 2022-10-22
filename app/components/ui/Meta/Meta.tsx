@@ -11,7 +11,7 @@ interface IMeta {
 
 const Meta: FC<IMeta> = ({ title, description, children }) => {
 	const { asPath } = useRouter()
-	const currentUrl = `http://localhost:3000${asPath}`
+	const currentUrl = `https://react-music-mor3hate.vercel.app/${asPath}`
 
 	return (
 		<>
