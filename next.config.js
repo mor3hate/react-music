@@ -1,8 +1,9 @@
+/** @type {import('next').NextConfig} */
 const withPWA = require('next-pwa')({
 	dest: 'public',
 })
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+
+module.exports = withPWA({
 	reactStrictMode: true,
 	swcMinify: true,
 	env: {
@@ -18,8 +19,9 @@ const nextConfig = {
 			'is2-ssl.mzstatic.com',
 		],
 	},
-}
-
-module.exports = withPWA({
-	nextConfig,
+	pwa: {
+		dest: 'public',
+		register: true,
+		skipWaiting: true,
+	},
 })
