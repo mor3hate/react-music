@@ -19,12 +19,6 @@ export const countryMenu: ICountryNavMenu = {
 			imagePath: '/gr.svg',
 			link: '/near-you/gr',
 			slug: 'gr',
-		},
-		{
-			name: 'France',
-			imagePath: '/fr.svg',
-			link: '/near-you/fr',
-			slug: 'fr',
-		},
+		}
 	],
 }
