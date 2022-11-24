@@ -1,5 +1,6 @@
 .artist_songs {
 	@apply flex items-center overflow-x-scroll flex-nowrap py-3 ml-10 gap-4 mt-4;
+	max-width: 968px;
 	&::-webkit-scrollbar {
 		background-color: #f8f8ff;
 		height: 10px;
