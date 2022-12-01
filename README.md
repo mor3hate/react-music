@@ -22,7 +22,7 @@ This app was created via React, NextJS, Redux Toolkit, React Query, Redux Persis
 
 - Beautiful animations
 
-## Deployment: [CLICK](https://react-music-1xf3fmdvg-mor3hate.vercel.app/)
+## Deployment: [CLICK](https://react-music-p9mcv9itv-mor3hate.vercel.app/)
 
 ## Environment Variables
 
