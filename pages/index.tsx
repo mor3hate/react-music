@@ -16,7 +16,7 @@ export async function getStaticProps() {
 		const songs: ITopChartSong[] = songsData.slice(0,21).map((item, i) => ({
 			artists: item.artists || '',
 			hub: item.hub,
-			images: item.images || '/public/music.png',
+			images: item.images || '/music.png',
 			index: i,
 			key: item.key,
 			subtitle: item.subtitle,
