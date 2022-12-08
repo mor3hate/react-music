@@ -1,34 +1,35 @@
 import { configureStore } from '@reduxjs/toolkit'
 import storage from 'redux-persist/lib/storage'
 import {
-	persistReducer,
-	persistStore,
 	FLUSH,
-	REHYDRATE,
 	PAUSE,
 	PERSIST,
+	persistReducer,
+	persistStore,
 	PURGE,
 	REGISTER,
+	REHYDRATE
 } from 'redux-persist'
-import playerReducer from './player/PlayerSlice'
+import { rootReducer } from './reducers'
 
 const persistConfig = {
 	key: 'root',
 	storage,
+	blacklist: ['player']
 }
 
-const persistedReducer = persistReducer(persistConfig, playerReducer)
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 const store = configureStore({
 	reducer: {
-		persistedReducer,
+		persistedReducer
 	},
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware({
 			serializableCheck: {
-				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-			},
-		}),
+				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+			}
+		})
 })
 
 export type RootState = ReturnType<typeof store.getState>

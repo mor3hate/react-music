@@ -7,6 +7,7 @@ import PlayPause from '../Play-Pause/PlayPause'
 import styles from './Gallery.module.scss'
 import { motion } from 'framer-motion'
 import { usePlay } from '../../../hooks/usePlay'
+import FavoriteButton from '../FavoriteButton/FavoriteButton'
 
 const GalleryItem: FC<ITopChartSong> = ({
 	index,
@@ -15,7 +16,7 @@ const GalleryItem: FC<ITopChartSong> = ({
 	subtitle,
 	title,
 	hub,
-	songId,
+	songId
 }) => {
 	const { handlePlay, handlePause } = usePlay()
 
@@ -26,6 +27,15 @@ const GalleryItem: FC<ITopChartSong> = ({
 			viewport={{ once: true }}
 			className={styles.card}
 		>
+			<FavoriteButton
+				songId={songId}
+				title={title}
+				hub={hub}
+				artists={artists}
+				images={images}
+				subtitle={subtitle}
+				index={index}
+			/>
 			<div className={styles.img_wrapper}>
 				<Image
 					src={images.coverart}

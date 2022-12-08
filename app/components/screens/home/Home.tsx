@@ -16,7 +16,9 @@ const Home: FC<IHome> = ({ songs }) => {
 		dispatch(setAllSongs(songs))
 	}, [dispatch, songs])
 
-	const { allSongs } = useAppSelector(state => state.persistedReducer)
+	const {
+		player: { allSongs }
+	} = useAppSelector(state => state.persistedReducer)
 
 	return (
 		<Meta

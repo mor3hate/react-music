@@ -5,14 +5,14 @@ export const menuMain: IMenu = {
 		{
 			title: 'Home',
 			link: '/',
-			icon: 'MdHomeFilled',
+			icon: 'MdHomeFilled'
 		},
 		{
 			title: 'Near you',
 			link: '/near-you/us',
-			icon: 'MdExplore',
-		},
-	],
+			icon: 'MdExplore'
+		}
+	]
 }
 
 export const menuCollection: IMenu = {
@@ -20,18 +20,8 @@ export const menuCollection: IMenu = {
 	items: [
 		{
 			title: 'Favorite Songs',
-			link: '/favorite',
-			icon: 'MdFavoriteBorder',
-		},
-		{
-			title: 'Artists',
-			link: '/artists',
-			icon: 'MdPeopleAlt',
-		},
-		{
-			title: 'Albums',
-			link: '/albums',
-			icon: 'MdHotelClass',
-		},
-	],
+			link: '/favorites',
+			icon: 'MdFavoriteBorder'
+		}
+	]
 }
