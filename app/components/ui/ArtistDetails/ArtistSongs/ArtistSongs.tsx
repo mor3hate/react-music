@@ -1,15 +1,11 @@
 import { motion } from 'framer-motion'
 import { FC } from 'react'
-import { Song } from '../../../screens/artist/artist-interface'
+import { ISongData } from '../../../screens/artist/artist-interface'
 import ArtistSongItem from './ArtistSongItem'
 
 import styles from './ArtistSongs.module.scss'
 
-interface IArtistSongs {
-	songs: [string, Song][]
-}
-
-const ArtistSongs: FC<IArtistSongs> = ({ songs }) => {
+const ArtistSongs: FC<ISongData> = ({ data }) => {
 	return (
 		<motion.div
 			initial={{ x: '-100%', opacity: 0 }}
@@ -17,10 +13,11 @@ const ArtistSongs: FC<IArtistSongs> = ({ songs }) => {
 			transition={{ duration: 1.5 }}
 			className={styles.artist_songs}
 		>
-			{songs.map((item, i) => (
+			{data.map((item, i) => (
 				<ArtistSongItem
-					attributes={item[1].attributes}
-					key={item[0]}
+					attributes={item.attributes}
+					id={item.id}
+					key={item.id}
 					index={i}
 				/>
 			))}

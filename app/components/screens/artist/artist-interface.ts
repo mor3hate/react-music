@@ -1,10 +1,18 @@
-export interface IArtists {
-	artists: IArtist[]
-	songs: [string, Song][]
+export interface IArtistSingleData {
+	data: IArtistData[]
 }
 
-export interface IArtist {
+export interface IArtistData {
 	attributes: IAttributes
+	views: IView
+}
+
+export interface IView {
+	'top-songs': ISongData
+}
+
+export interface ISongData {
+	data: Song[]
 }
 
 export interface IAttributes {
@@ -17,6 +25,7 @@ export interface IArtWork {
 }
 
 export interface Song {
+	id: string
 	index: number
 	attributes: SongAttributes
 }

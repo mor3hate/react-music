@@ -5,7 +5,6 @@ import ArtistSongs from '../../ui/ArtistDetails/ArtistSongs/ArtistSongs'
 import Heading from '../../ui/Heading/Heading'
 import Meta from '../../ui/Meta/Meta'
 import SubHeading from '../../ui/SubHeading/SubHeading'
-import { Song } from './artist-interface'
 import { useArtist } from './useArtist'
 import WaveLoader from '../../ui/LoaderWave/WaveLoader'
 
@@ -18,11 +17,9 @@ const ArtistCard: FC = () => {
 
 	const { data, isLoading } = useArtist(artistId)
 
-	//@ts-ignore
-	const songs = Object.entries<Song>(data?.songs || [])
 	return (
 		<Meta
-			title={data?.artists[artistId].attributes.name || 'Artist page'}
+			title='Artist page'
 			description='All the information about various artists'
 		>
 			<Heading title='Artist page' />
@@ -30,10 +27,14 @@ const ArtistCard: FC = () => {
 				{isLoading ? (
 					<WaveLoader />
 				) : (
-					<ArtistDetails attributes={data?.artists[artistId].attributes!} />
+					<ArtistDetails attributes={data![0].attributes} />
 				)}
 				<SubHeading title='Related songs' />
-				{isLoading ? <WaveLoader /> : <ArtistSongs songs={songs} />}
+				{isLoading ? (
+					<WaveLoader />
+				) : (
+					<ArtistSongs data={data![0].views['top-songs'].data || []} />
+				)}
 			</div>
 		</Meta>
 	)

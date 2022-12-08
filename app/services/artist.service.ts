@@ -1,9 +1,9 @@
-import { IArtists } from '../components/screens/artist/artist-interface'
 import axios from 'axios'
+import { IArtistSingleData } from '../components/screens/artist/artist-interface'
 
 export const ArtistService = {
 	async GetArtistById(id: number) {
-		return axios.get<IArtists>(
+		return axios.get<IArtistSingleData>(
 			'https://shazam-core.p.rapidapi.com/v2/artists/details',
 			{
 				headers: {

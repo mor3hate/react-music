@@ -7,8 +7,8 @@ export const useArtist = (id: number) => {
 		['get artist information', id],
 		() => ArtistService.GetArtistById(id),
 		{
-			select: ({ data }) => data,
-			enabled: !!id,
+			select: ({ data }) => data.data,
+			enabled: !!id
 		}
 	)
 	return useMemo(() => ({ ...queryData }), [queryData])

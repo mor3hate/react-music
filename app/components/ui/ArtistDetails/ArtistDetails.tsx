@@ -1,12 +1,12 @@
 import Image from 'next/image'
 import { FC } from 'react'
-import { IArtist } from '../../screens/artist/artist-interface'
+import { IAttributes } from '../../screens/artist/artist-interface'
 
 import styles from './ArtistDetails.module.scss'
 import clsx from 'clsx'
 import { TypeAnimation } from 'react-type-animation'
 
-const ArtistDetails: FC<IArtist> = ({ attributes }) => {
+const ArtistDetails: FC<{ attributes: IAttributes }> = ({ attributes }) => {
 	return (
 		<div className={styles.artist_details}>
 			<div className={styles.pulse_circle}></div>
@@ -15,16 +15,21 @@ const ArtistDetails: FC<IArtist> = ({ attributes }) => {
 			></div>
 			<div className={styles.artist_detailsImg}>
 				<Image
-					src={attributes.artwork.url
-						.replace('{w}', '150')
-						.replace('{h}', '150')}
+					src={
+						attributes
+							? attributes.artwork.url
+									.replace('{w}', '150')
+									.replace('{h}', '150')
+							: ''
+					}
 					className={styles.img}
 					layout='fill'
+					alt='artist-image'
 					draggable={false}
 				/>
 			</div>
 			<TypeAnimation
-				sequence={[1000, attributes.name]}
+				sequence={[1000, attributes ? attributes.name : '']}
 				wrapper='p'
 				cursor={false}
 				speed={30}
