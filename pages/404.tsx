@@ -7,7 +7,7 @@ const Error404Page: NextPage = () => {
 		<div className='error_page'>
 			<Meta title='Page not found'>
 				<h1>Lost your way?</h1>
-				<p>We can't find the page you're looking for</p>
+				<p>We can&apos;t find the page you&apos;re looking for</p>
 				<p>error404</p>
 				<Link href='/'>
 					<a>Go home page &#8594;</a>
