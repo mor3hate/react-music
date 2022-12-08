@@ -15,14 +15,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	try {
 		const { items } = genresMenu
 		const paths = items.map(i => ({
-			params: { slug: i.slug },
+			params: { slug: i.slug }
 		}))
 
 		return { paths, fallback: 'blocking' }
 	} catch (error) {
 		return {
 			paths: [],
-			fallback: false,
+			fallback: false
 		}
 	}
 }
@@ -34,27 +34,27 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 		)
 
 		const charts: ITopChartSong[] = chartsData.slice(0, 21).map((item, i) => ({
-			artists: item.artists,
+			artists: item.artists || [],
 			hub: item.hub,
 			images: item.images,
 			index: i,
 			key: item.key,
 			subtitle: item.subtitle,
 			title: item.title,
-			songId: item.key,
+			songId: item.key
 		}))
 
 		return {
 			props: {
-				charts,
+				charts
 			},
-			revalidate: 40,
+			revalidate: 40
 		}
 	} catch (error) {
 		return {
 			props: {
-				charts: [],
-			},
+				charts: []
+			}
 		}
 	}
 }
